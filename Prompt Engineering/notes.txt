@@ -1,0 +1,56 @@
+**************************************************
+The 4 Elements of a "A Good Prompt"
+
+1. Instruction: Suggest a dinner recipe I can make
+2. Context: I am a Vegetarian and prefer meals that take less than an hour.
+3. Input Data: I have Rice, Tomato, Onions, spices and Carrots.
+4. Output Indicator: please list the ingredients and provide step-by-step instructions.
+
+Templates
+Some apps include prompt templates to standardize input, ensuring consistency and reusability.
+
+**************************************************
+Prompt Engineering Techniques
+1. Zero Shot
+Uses no example, rely entirely on model's knowledge. Suitable for straightforward tasks.
+e.g. Suggest a beginner exercise for weight loss
+
+2. One Shot
+Provide 1 example to set expectation.
+e.g. What year was gravity discovered? 1665 AD
+What year was electricity discovered?
+Response: 600 BC
+
+3. Few Shot
+Offer Multiple examples to teach pattern, and expect output in similar pattern
+
+4. Chain of thought
+Guide the model to break down reasoning into logical steps, improving performance on tasks like math problem or troubleshooting.
+
+5. Negative
+Instruct the model on what to avoid, reducing the risk of undesirable output.
+
+**************************************************
+Prompt Engineering Hands-On
+resources\Artificial Intelligence A-Z\Part 1 - Prompt Engineering\Movie_Script_Generator
+
+
+**************************************************
+Inference Parameters for Gen AI
+
+Inference:
+"I hear the hoof beats of .............."
+ 
+                      [horses, zebras, donkeys, girragges, unicorns, ...]
+Initial Probability   [70,      20,     5,        2,          1    , ...]
+<Randomness and Diversity>
+Temperature effect:   [60,      15,     10,       3,          3    , ...] // temp is high ( say 1 )-> flattens the distribution
+Top P: say 0.85, top 85% will be chosen; (either of these: horses, zebras, donkeys)
+Top K: say 60, top 60 values will be considered.
+Top P and Top K work together.
+
+<Length>
+Max Length: specifies the Max Length of generated response by limiting the number of tokens.
+Stop Sequences: Defines specific sequence of characters or tokens that signal the model to stop generating further.
+
+**************************************************
