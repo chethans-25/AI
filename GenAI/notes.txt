@@ -1,0 +1,236 @@
+**************************************************
+AI Hierarchy
+
+Artificial Intelligence
+  |
+  Machine Learning
+    |
+    Deep Learning
+      |
+      Generative AI
+        |
+        Large Language Model
+        |
+        Diffusion Models
+        |
+        etc...
+
+
+**************************************************
+GenAI
+Provide lots of example(say different apple images) -> Train the Model
+-> Model can Generate the images of Apple that never existed before.
+
+**************************************************
+GenAI for images
+
+Diffusion Model
+-One of the approaches to GenAI for images
+
+Forward Diffusion Process
+<Learning happens in this way>
+e.g. Image of a Dog.
+With an existing image of a Dog, the Model adds a little bit of noise.
+Then learns the difference between noisy and clear image.
+Keeps adding noise and keeps learning. Until It becomes completely noisy.
+
+Denoising ( Image Generation )
+<Generation happens in this way>
+As it has learned how an noise looks like a million times,
+It starts with noise. Keeps reducing the predicted noise until a clear image is obtained.
+
+**************************************************
+Foundation Model
+
+Take a GenAI model and feed a lot of data to pre-train it.
+A pre-trained GenAI model becomes the Foundation Model.
+
+Pre-training requires a lot of computing power, lots of time, a lot of money.
+
+They can perform a variety of tasks such as language processing, image generation, translation, so on.
+
+**************************************************
+Foundation Model Lifecycle
+
+1. Data Selection and Preparation
+(text, images, audio, ...)
+
+2. Model Selection and Architecture
+(transformer, Diffusion)
+
+3. Pre-training
+
+4. Fine tuning
+For domain specific dataset
+
+5. Evaluation of the Model
+
+6. Deploy
+Deploy the model in production environment for real time inference.
+
+7. Monitor and get feedback
+Track performance & feedback and refine the model
+
+8. Iteration and Maintenance
+regularly update the model with new data.
+
+**************************************************
+Data Selection
+Types of data
+1. Structured Data
+- Table
+- Code
+- SQL
+- JSON
+- CSV
+
+2. Unstructured Data
+- images
+- audios
+- document
+- video
+- social media comments
+
+3 Labeled Data
+data + Label
+- set of ( dog image + weight )
+- Table of ( country name + time in site + purchase in USD)
+
+4. Unlabeled Data
+data without Label
+
+**************************************************
+Foundation Model Selection
+Things to consider:
+- Cost
+- Modality: audio, image, text, mixed, ...
+- Customization
+- inference option
+- Latency
+- Architecture
+- performance benchmark
+- Language
+- Size and complexity
+- Scalability
+- Compliance and Licensing Agreements
+- Environmental considerations
+
+
+**************************************************
+Training vs Inference
+
+Training:
+So many Texts
+Self-supervised learned
+e.g.
+An apple is a round ........
+It needs to predict the blank
+
+potato(55%)
+tree(20%)
+veggie(10%)
+Fruit(8%)
+airplane(1%)
+...
+
+Then checks the correct answer ( Apple )
+error is 92%
+LLM will adjust its internal parameters gradually and iteratively to learn and predict the next word.
+
+
+Inference:
+Inference is the application of trained LLM.
+LLM processes new inputs and generates outputs based on its learned knowledge.
+Model generates on word at a time considering all the original input text + all the generated output words.
+
+What is the tallest Mountain?
+
+The
+The tallest
+The tallest Mountain
+The tallest Mountain is
+The tallest Mountain is Mount Everest
+The tallest Mountain is Mount Everest. <End of Sequence>
+
+
+**************************************************
+Context Window
+Max number of tokens the model can consider at once during processing.
+Model with small Context Window may struggle with tasks requiring a broader understaing of context.
+More size of context window --> More computational cost, more memory usage.
+Once the context window is exceeded, the older tokens are droppen, the model forgets the earlier part of the conversation.
+
+**************************************************
+Tokens & Embeddings
+
+Tokens
+basic building block that LLMs use to process and understand text as manageable pieces
+They can represent words, subwords, even individual characters.
+e.g.  Unpredictability--->  Un, Predict, Ability
+
+Embeddings
+Numberical representations of tokens that capture their meaning and context.
+Each token is mapped to a high dimensional vector, where tokens with similar meaning have closer values.
+These vectors enable the model to understand the relationship between words.
+
+**************************************************
+Transformer
+A neural network Architecture designed to handle seq data by focusing on relationships bw different parts of the input.
+Training of neural network is the process of gradually and iteratively adjusting its parameters to improve its ability to recognize patterns and make accurate predictions.
+Original Architecture had Encoder and decoder; Now only Decoder.
+
+**************************************************
+FM Training
+Training from Sctratch(Pre-training)
+Build FM entirely from group up using extensive data
+requires large dataset and high computational power
+Provides most control and Customization
+Resource Intensive, time consuming and high cost
+Uses Unlabeled data
+
+Continued Pre-training
+Existing model; broadens the knowledge across various domain specific topics
+As needed basis; to integrate new knowledge or data updates
+Ideal for Insustries where the model needs to stay updated with evolving information.
+Uses Unlabeled data
+
+**************************************************
+FM Fine-Tuning
+Domain specific FT
+Uses domain specific dataset to teach the model specialized vocabulary, context.
+
+Instruction-based FT
+Uses examples and Instructions to align the model's behavior and responses with specific goals;
+such as tone, style, or response patterns
+end use e.g. : customer service
+
+Reinforcement Learning with Human Feedback ( RLHF )
+Trains the model to generate responses that are more useful, appropriate and aligned with human preferences
+Utilizes iterative feedback, where human evaluators rank outputs.
+
+
+**************************************************
+FM Evaluation
+Model's response for a task is compared with the reference answer.
+
+Evaluation methods:
+Human Evaluation
+Involves Human Experts assessing the model's output for quality, relevance and accuracy.
+
+ROUGE
+Measures the recall of overlap bw response and reference.
+Records how much relevant info is captured.
+
+BLEU
+Evaluates the precision of overlap bw response and reference
+Focuses on exact matches
+commonly used for machine translation tasks
+
+BERTScore
+Uses a pre-trained BERT model to evaluate semantic similarity.
+Captures meaning beyond surface level text overlaps.
+
+**************************************************
+RAG : Retrieval Augmented Generation
+Combines FM's knowledge with additional info to improve responses.
+Uses dynamic Retrieval to access databases, docs, or APIs making responses more context-aware.
