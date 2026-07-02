@@ -1,0 +1,3 @@
+[submodule "AI_core_track"]
+	path = AI_core_track
+	url = https://github.com/ed-donner/llm_engineering.git
